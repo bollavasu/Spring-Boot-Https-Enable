@@ -1,0 +1,22 @@
+
+https://howtodoinjava.com/spring-boot/spring-boot-ssl-https-example/
+
+1)create a self-signed certificate by the following command
+
+  keytool -genkey -alias selfsigned_localhost_sslserver -keyalg RSA -keysize 2048 -validity 700 -keypass changeit -storepass changeit -keystore ssl-server.jks
+  
+2)To view what is inside this keystore we can use the following command
+
+  keytool -list -keystore ssl-server.jks
+  
+3)copy the generated keystore file (ssl-server.jks) into the project's resources folder 
+
+4)mvn clean install
+
+5)mvn spring-boot:run
+
+6)https://localhost:8443/secured
+
+7)redirecting our HTTP traffic to HTTPS
+
+  http://localhost:8080/secured   (will be redirected to  https://localhost:8443/secured)
